@@ -11,7 +11,7 @@ namespace Git.Services
 {
     public class RepositoriesService: IRepositoriesService
     {
-        public readonly ApplicationDbContext db;
+        private readonly ApplicationDbContext db;
 
         public RepositoriesService(ApplicationDbContext db)
         {
@@ -36,7 +36,7 @@ namespace Git.Services
 
             this.db.Repositories.Add(repo);
             this.db.SaveChanges();
-            return owner.Id;
+            return repo.Id;
         }
 
         public IEnumerable<RepositoryViewModel> GetAll()
